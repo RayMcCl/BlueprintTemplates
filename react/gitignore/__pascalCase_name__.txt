@@ -1,0 +1,5 @@
+.vscode
+.storybook
+.cache
+dist
+node_modules

@@ -1,4 +1,6 @@
 import React from 'react';
+import { shallow } from 'enzyme';
+
 import {{pascalCase name}} from '../{{pascalCase name}}';
 import { defaults } from '../{{pascalCase name}}.props';
 
@@ -8,14 +10,21 @@ const tests = {
     icons: <{{pascalCase name}}>:3</{{pascalCase name}}>
 };
 
-test('Default Props', () => {
-    expect(tests.empty.props).toEqual(defaults);
+describe('<{{pascalCase name}} />', () => {
+    it('renders', () => {
+        const renderedComponent = shallow(<{{pascalCase name}} />);
+        expect(
+            // renderedComponent.find('.button-group').getElement()
+        ).toBeDefined();
+    });
+
+    it('renders its children', () => {
+        const text = 'Hello World';
+        const renderedComponent = shallow(
+            <{{pascalCase name}}>{ text }</{{pascalCase name}}>
+        );
+        expect(
+            renderedComponent.contains(text)
+        ).toEqual(true);
+    });
 });
-
-test('Empty {{pascalCase name}} exists', () => {
-    expect(tests.empty).toBeDefined();
-})
-
-test('{{pascalCase name}} has text', () => {
-    expect(tests.text.props.children).toEqual('Hello World')
-})
